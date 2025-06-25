@@ -9,6 +9,8 @@ pipeline {
         }
         stage('Test') { 
             steps {
+                // By security, remove previous TestResults (drf => directory, remove, force (no error if directory does not exists))
+                sh 'rm -drf ./SampleDotNetProject/TestSampleDotNetProject/TestResults'
                 sh 'dotnet test ./SampleDotNetProject/SampleDotNetProject.sln --no-build --no-restore --collect "XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.IncludeTestAssembly=true'
             }
             post {
