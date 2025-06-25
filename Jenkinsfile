@@ -13,7 +13,7 @@ pipeline {
             }
             post {
                 always {
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: 'TestSampleDotNetProject/TestResults']])
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: './SampleDotNetProject/TestSampleDotNetProject/TestResults']])
                 }
             }
         }
