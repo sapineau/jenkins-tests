@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'dotnet test ./SampleDotNetProject/SampleDotNetProject.sln --no-build --no-restore --collect "XPlat Code Coverage"'
+                sh 'dotnet test ./SampleDotNetProject/SampleDotNetProject.sln --no-build --no-restore --collect "XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.IncludeTestAssembly=true'
             }
             post {
                 always {
                     // Need to install plugin "Coverage"
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: './SampleDotNetProject/TestResults']])
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: './SampleDotNetProject/TestSampleDotNetProject/TestResults']])
                 }
             }
         }
