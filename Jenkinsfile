@@ -19,7 +19,7 @@ pipeline {
             post {
                 always {
                     // Need to install plugin "Coverage"
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: './SampleDotNetProject/TestSampleDotNetProject/TestResults']])
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/coverage.cobertura.xml']], sourceDirectories: [[path: './SampleDotNetProject/TestSampleDotNetProject/TestResults']])
                 }
             }
         }
